@@ -1,9 +1,10 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-  baseURL: "https://git.heroku.com/guvi-movie-app.git/",
+  baseURL: "https://guvi-movie-app.herokuapp.com/",
   headers: {
     "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
   },
 });
 

@@ -60,7 +60,7 @@ const SearchPage = ({ setSelectedMovie, setIndex }) => {
               </div>
             ))
           ) : (
-            <></>
+            <div className="center safeArea">No data found</div>
           )}
         </div>
       </div>
