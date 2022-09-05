@@ -1,8 +1,10 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-  // baseURL: "https://guvi-movie-app.herokuapp.com/",
-  baseURL: "http://localhost:3200",
+  //PROD
+  baseURL: "https://guvi-movie-app.herokuapp.com/",
+  //DEVO
+  // baseURL: "http://localhost:3200",
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
