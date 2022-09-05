@@ -22,7 +22,6 @@ const AddMoviePage = () => {
   };
 
   const addMovie = async () => {
-    console.log(Object.keys(MoviesRepo));
     var response = await MoviesRepo.addNewMovie(
       formValues.name,
       formValues.poster,
@@ -45,7 +44,6 @@ const AddMoviePage = () => {
 
   const validate = (values) => {
     const errors = {};
-    console.log(values);
     if (!values.name) {
       errors.name = "Movie Name is required!";
     }

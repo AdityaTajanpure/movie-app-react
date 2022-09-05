@@ -6,7 +6,6 @@ import { useState } from "react";
 const SearchPage = ({ setSelectedMovie, setIndex }) => {
   const [result, setResult] = useState([]);
   const search = async (e) => {
-    console.log(e.target.value);
     let response = await MoviesRepo.searchMovie(e.target.value);
     setResult(response.data.data);
   };

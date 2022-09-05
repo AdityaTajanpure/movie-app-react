@@ -5,7 +5,6 @@ import AddMoviePage from "./pages/AddMoviePage";
 import SearchPage from "./pages/SearchPage";
 import AboutPage from "./pages/AboutPage";
 import MoviesRepo from "./api_client/movies_repo";
-
 import { useState, useEffect } from "react";
 
 const App = () => {
@@ -16,8 +15,16 @@ const App = () => {
   const getAllMovies = async () => {
     var response = await MoviesRepo.getAllMovies();
     if (response.data.status) {
+      if (window.location.pathname === "/") {
+        setSelectedMovie(response.data.data[0]);
+      } else if (window.location.pathname !== "/") {
+        setSelectedMovie(
+          response.data.data.filter(
+            (movie) => movie._id === window.location.pathname.replace("/", "")
+          )[0]
+        );
+      }
       setMovies(response.data.data);
-      setSelectedMovie(response.data.data[0]);
     }
   };
 
@@ -38,14 +45,17 @@ const App = () => {
   const getPageByIndex = (index) => {
     switch (index) {
       case 0:
-        return movies.length > 0 ? (
+        return selectedMovie && movies.length > 0 ? (
           <HomePage
             selectedMovie={selectedMovie}
             setSelectedMovie={setSelectedMovie}
             movies={[...movies]}
+            getAllMovies={getAllMovies}
           />
         ) : (
-          <></>
+          <div className="safeArea center">
+            <h3 className="title">No Data Found</h3>
+          </div>
         );
       case 1:
         return <AddMoviePage />;

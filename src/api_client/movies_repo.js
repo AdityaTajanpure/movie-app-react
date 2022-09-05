@@ -28,6 +28,22 @@ const MoviesRepo = {
   deleteMovieById: async (id) => {
     return await axiosClient.delete(`movies/deleteMovieById/${id}`);
   },
+  shareMovie: async (referrer_name, referred_name, referred_email, movie) => {
+    return await axiosClient.post("movies/shareMovie/", {
+      referrer_name,
+      referred_name,
+      referred_email,
+      movie,
+    });
+  },
+  order: async ({ amount, currency, receipt, notes }) => {
+    return await axiosClient.post("movies/order/", {
+      amount,
+      currency,
+      receipt,
+      notes,
+    });
+  },
 };
 
 export default MoviesRepo;
