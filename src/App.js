@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 const App = () => {
   const [index, setIndex] = useState(0);
   const [movies, setMovies] = useState([]);
+  const [isLoading, setLoading] = useState(true);
   const [selectedMovie, setSelectedMovie] = useState(movies[0]);
 
   const getAllMovies = async () => {
@@ -25,6 +26,7 @@ const App = () => {
         );
       }
       setMovies(response.data.data);
+      setLoading(false);
     }
   };
 
@@ -52,6 +54,10 @@ const App = () => {
             movies={[...movies]}
             getAllMovies={getAllMovies}
           />
+        ) : isLoading ? (
+          <div className="safeArea center">
+            <h3 className="title">Loading</h3>
+          </div>
         ) : (
           <div className="safeArea center">
             <h3 className="title">No Data Found</h3>
