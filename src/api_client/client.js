@@ -2,7 +2,7 @@ import axios from "axios";
 
 const axiosClient = axios.create({
   //PROD
-  baseURL: "https://guvi-movie-app.herokuapp.com/",
+  baseURL: "https://web-production-5f69.up.railway.app/",
   //DEVO
   // baseURL: "http://localhost:3200",
   headers: {
